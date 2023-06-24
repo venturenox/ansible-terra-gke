@@ -1,0 +1,21 @@
+---
+- name: Provision Autopilot GKE cluster with Terraform
+  hosts: localhost
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Install Terraform
+      apt:
+        name: terraform
+        state: present
+
+    - name: Initialize Terraform
+      command: terraform init
+      args:
+        chdir: terraform
+
+    - name: Create Cluster
+      command: terraform apply -auto-approve -var-file="secret.tfvars"
+      args:
+        chdir: terraform

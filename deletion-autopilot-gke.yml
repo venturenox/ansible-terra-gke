@@ -1,0 +1,11 @@
+---
+- name: Delete Autopilot GKE cluster with Terraform
+  hosts: localhost
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Destroy Terraform resources
+      command: terraform destroy -auto-approve -var-file="secret.tfvars"
+      args:
+        chdir: terraform

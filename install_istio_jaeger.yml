@@ -1,0 +1,42 @@
+---
+- name: Install Istio on GKE cluster
+  hosts: localhost
+  gather_facts: false
+  become: true
+
+  collections:
+    - kubernetes.core
+
+  tasks:
+    - name: access gcp 
+      shell: gcloud auth activate-service-account --key-file pg-bull-run-8c9ceac45e93.json
+    
+    - name: Add istio chart repo
+      kubernetes.core.helm_repository:
+        name: istio
+        repo_url: "https://istio-release.storage.googleapis.com/charts"
+    
+    - name: Add Jaeger chart repo
+      kubernetes.core.helm_repository:
+        name: jaegertracing
+        repo_url: "https://jaegertracing.github.io/helm-charts"
+    
+    - name: Deploy latest version of Istio chart inside ist namespace with values
+      kubernetes.core.helm:
+        name: istiod
+        chart_ref: istio/istiod
+        create_namespace: true
+        namespace: istio-system
+        release_namespace: istiod
+        ca_cert: 
+        kubeconfig: '~/.kube/config'
+
+    - name: Deploy latest version of Jaegar chart inside jae namespace with values
+      kubernetes.core.helm:
+        name: jaeger
+        chart_ref: jaegertracing/jaeger
+        create_namespace: true
+        namespace: jaeg
+        release_namespace: jaeger
+        kubeconfig: '~/.kube/config'
+
