@@ -1,4 +1,14 @@
 # ansible-terra-gke
+
+Update your vars in ansible.vars.yml file,  
+and you need to have service-account secrets json key in your terraform and root directory.
+```
+project_id: crewnetics-dev
+credential: crewnetics-dev-352099b311f4.json
+region_name: us-central1
+environment: test
+autopilot: true
+```
 ## step 1: create-autopilot-gke.yml
 In order to create an autopilot cluster on gke, we have to run following commands,  
 ```

@@ -1,0 +1,5 @@
+project_id: crewnetics-dev
+credential: crewnetics-dev-352099b311f4.json
+region_name: us-central1
+environment: test
+autopilot: true

@@ -3,15 +3,15 @@
   hosts: localhost
   gather_facts: false
   become: true
-  vars:
-    key: crewnetics-dev-352099b311f4.json
-
+  vars_files:
+    - ansible.vars.yml
+    
   collections:
     - kubernetes.core
 
   tasks:
     - name: access gcp 
-      shell: gcloud auth activate-service-account --key-file $key
+      shell: gcloud auth activate-service-account --key-file credential
     
     - name: Add istio chart repo
       kubernetes.core.helm_repository:
