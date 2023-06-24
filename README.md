@@ -12,6 +12,11 @@ gcloud container clusters get-credentials autopilot-gui --region us-central1 --p
 kubectl config use-context gke_pg-bull-run_us-central1_autopilot-gui  
 ansible-playbook -i istio_inventory.ini install_istio_jaeger.yml --ask-become-pass
 ```
+## step 3: delete-autopilot-gke.yml
+In order to delete an autopilot cluster in gke and its resources, we have to run following commands,  
+```
+ansible-playbook -i inventory.ini delete-autopilot-gke.yml --ask-become-pass
+```
 
 ### other commands:
 ```
