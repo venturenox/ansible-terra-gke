@@ -6,6 +6,6 @@
 
   tasks:
     - name: Destroy Terraform resources
-      command: terraform destroy -auto-approve -var-file="secret.tfvars"
+      command: terraform destroy -auto-approve
       args:
         chdir: terraform

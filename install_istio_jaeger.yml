@@ -3,13 +3,15 @@
   hosts: localhost
   gather_facts: false
   become: true
+  vars:
+    key: crewnetics-dev-352099b311f4.json
 
   collections:
     - kubernetes.core
 
   tasks:
     - name: access gcp 
-      shell: gcloud auth activate-service-account --key-file crewnetics-dev-352099b311f4.json
+      shell: gcloud auth activate-service-account --key-file $key
     
     - name: Add istio chart repo
       kubernetes.core.helm_repository:

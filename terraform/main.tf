@@ -26,7 +26,7 @@ resource "google_container_cluster" "primary" {
     name     = var.environment
     location = var.region_name
 
-    enable_autopilot = true
+    enable_autopilot = var.autopilot
     
     lifecycle {
         ignore_changes = [

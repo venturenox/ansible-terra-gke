@@ -16,6 +16,6 @@
         chdir: terraform
 
     - name: Create Cluster
-      command: terraform apply -auto-approve -var-file="secret.tfvars"
+      command: terraform apply -auto-approve -var="project_id=crewnetics-dev" -var="credential=crewnetics-dev-352099b311f4.json" -var="region_name=us-central1" -var="environment=test" -var="autopilot=true" 
       args:
         chdir: terraform

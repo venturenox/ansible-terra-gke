@@ -1,13 +1,11 @@
 variable "project_id" {
   description = "unique id of gcp project"
   default= "crewnetics-dev"
-  # default= "pg-bull-run"
 }
 
 variable "credential" {
   description = "crewnetics-dev"
-  # description = "pg-bull-run"
-  sensitive   = true
+  default = "crewnetics-dev-352099b311f4.json"
 }
 
 variable "region_name" {
@@ -15,19 +13,9 @@ variable "region_name" {
   default = "us-central1"
 }
 
-variable "zone_name" {
-  description = "zone inside region"
-  default = "us-central1-a"
-}
-
 variable "environment" {
-  description = "name of environment"
+  description = "Name of Cluster"
   default = "test"
-}
-
-variable "mach_type" {
-  description = "machine type to be used for nodepool"
-  default = "e2-medium"
 }
 
 variable "autopilot" {
