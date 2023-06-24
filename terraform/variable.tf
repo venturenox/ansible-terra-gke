@@ -1,10 +1,12 @@
 variable "project_id" {
   description = "unique id of gcp project"
-  default= "pg-bull-run"
+  default= "crewnetics-dev"
+  # default= "pg-bull-run"
 }
 
 variable "credential" {
-  description = "pg-bull-run"
+  description = "crewnetics-dev"
+  # description = "pg-bull-run"
   sensitive   = true
 }
 
