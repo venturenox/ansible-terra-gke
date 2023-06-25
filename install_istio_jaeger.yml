@@ -2,7 +2,6 @@
 - name: Install Istio on GKE cluster
   hosts: localhost
   gather_facts: false
-  # become: true
   vars_files:
     - ansible.vars.yml
     

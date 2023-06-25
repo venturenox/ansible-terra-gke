@@ -12,22 +12,18 @@ autopilot: true
 ## step 1: create-autopilot-gke.yml
 In order to create an autopilot cluster on gke, we have to run following commands,  
 ```
-ansible-playbook -i inventory.ini create-autopilot-gke.yml
+ansible-playbook create-autopilot-gke.yml
 ```
 
 ## step 2: install_istio_jaeger.yml
 In order to install jaegar and istio in above cluster, we have to run following commands,  
 ```
-gcloud config set core/project crewnetics-dev
-gcloud container clusters get-credentials test --region us-central1 --project crewnetics-dev
-kubectl config use-context gke_crewnetics-dev_us-central1_test  
-
-ansible-playbook -i istio_inventory.ini install_istio_jaeger.yml --ask-become-pass
+ansible-playbook install_istio_jaeger.yml --ask-become-pass
 ```
 ## step 3: delete-autopilot-gke.yml
 In order to delete an autopilot cluster in gke and its resources, we have to run following commands,  
 ```
-ansible-playbook -i inventory.ini delete-autopilot-gke.yml --ask-become-pass
+ansible-playbook delete-autopilot-gke.yml --ask-become-pass
 ```
 
 ### other commands:
