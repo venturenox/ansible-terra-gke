@@ -11,7 +11,6 @@ provider "google" {
     credentials = file(var.credential)
     project = var.project_id 
     region  = var.region_name
-    zone    = var.zone_name
 }
 
 terraform {
@@ -23,10 +22,10 @@ terraform {
 }
 
 resource "google_container_cluster" "primary" {
-    name     = var.environment
+    name     = var.cluster_name
     location = var.region_name
 
-    enable_autopilot = var.autopilot
+    enable_autopilot = true
     
     lifecycle {
         ignore_changes = [

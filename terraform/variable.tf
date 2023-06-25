@@ -13,13 +13,8 @@ variable "region_name" {
   default = "us-central1"
 }
 
-variable "environment" {
+variable "cluster_name" {
   description = "Name of Cluster"
   default = "test"
 }
 
-variable "autopilot" {
-  description = "Enable Autopilot mode for GKE cluster"
-  type        = bool
-  default     = true
-}

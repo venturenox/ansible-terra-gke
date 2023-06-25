@@ -2,7 +2,7 @@
 - name: Install Istio on GKE cluster
   hosts: localhost
   gather_facts: false
-  become: true
+  # become: true
   vars_files:
     - ansible.vars.yml
     
@@ -11,8 +11,17 @@
 
   tasks:
     - name: access gcp 
-      shell: gcloud auth activate-service-account --key-file credential
+      shell: gcloud auth activate-service-account --key-file {{ credential }}
     
+    - name: set your desire project
+      shell: gcloud config set core/project {{ project_id }}
+    
+    - name: get cluster credentials
+      shell: gcloud container clusters get-credentials {{ cluster_name }} --region {{ region_name }} --project {{ project_id }}
+    
+    - name: set kube context to your cluster 
+      shell: kubectl config use-context gke_{{ project_id }}_{{ region_name }}_{{ cluster_name }}
+
     - name: Add istio chart repo
       kubernetes.core.helm_repository:
         name: istio
