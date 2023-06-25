@@ -18,3 +18,10 @@ variable "cluster_name" {
   default = "test"
 }
 
+variable "autopilot" {
+  description = "Enable Autopilot mode for GKE cluster"
+  type        = bool
+  default     = true
+}
+
+
