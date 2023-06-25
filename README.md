@@ -16,8 +16,12 @@ ansible-playbook -i inventory.ini create-autopilot-gke.yml
 ```
 
 ## step 2: install_istio_jaeger.yml
-In order to install jaegar and istio in above cluster, we have to run following command,  
+In order to install jaegar and istio in above cluster, we have to run following commands,  
 ```
+gcloud config set core/project crewnetics-dev
+gcloud container clusters get-credentials test --region us-central1 --project crewnetics-dev
+kubectl config use-context gke_crewnetics-dev_us-central1_test  
+
 ansible-playbook -i istio_inventory.ini install_istio_jaeger.yml --ask-become-pass
 ```
 ## step 3: delete-autopilot-gke.yml

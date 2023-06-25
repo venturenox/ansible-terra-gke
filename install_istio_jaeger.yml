@@ -50,4 +50,6 @@
         namespace: jaeg
         release_namespace: jaeger
         kubeconfig: '~/.kube/config'
+        values_files:
+          - jaeger.values.yml
 
